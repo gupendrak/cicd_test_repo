@@ -4,4 +4,6 @@ scipy>=1.11.3
 bandit>=1.7.7
 isort>=5.12.0
 black>=23.3.0
+
 pytest>=6.2.5
+lark>=1.1.1

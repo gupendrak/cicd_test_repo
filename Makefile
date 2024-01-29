@@ -12,10 +12,16 @@ virtual: requirements.txt
 lint: test_module/*.py test/tests.py
 	\
  	. venv/bin/activate; \
-	pip -V; \
 	isort test_module/*.py test/tests.py; \
 	black --line-length 120 test_module/*.py test/tests.py; \
 	bandit -v test_module/*.py --skip=B301,B403; \
+	
+.PHONY: test
+test: test/tests.py
+	\
+ 	. venv/bin/activate; \
+ 	export PYTHONPATH=${PYTHONPATH}:${pwd}; \
+ 	pytest test/tests.py
 
 .PHONY: clean
 clean:
